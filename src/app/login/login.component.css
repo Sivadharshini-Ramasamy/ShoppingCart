@@ -1,0 +1,8 @@
+input[type="submit"]:disabled {
+    background: #dddddd;
+    cursor:pointer;
+}
+
+.error{
+  color: red;
+}

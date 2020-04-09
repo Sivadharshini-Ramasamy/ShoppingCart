@@ -1,0 +1,53 @@
+<div class="w3l_banner_nav_right">
+    <!-- login -->
+    <div class="w3_login">
+        <h3>Sign In & Sign Up</h3>
+        <div class="w3_login_module">
+            <div class="module form-module">
+                <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                    <div class="tooltip">Click Me</div>
+                </div>
+                <!-- START REACTIVE FORM -->
+                <div class="form">
+                    <h2>Login to your account</h2>
+                    <p class="error">{{alert}}</p>
+                    <form [formGroup]="loginForm" (submit)=doLogin()>
+                        <p class="error" *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched">
+                            Please enter valid username
+                        </p>
+                        <input type="text" name="Username" placeholder="Username" formControlName="username">
+                        <p class="error" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+                            Please enter a password
+                        </p>
+                        <input type="password" name="Password" placeholder="Password" formControlName="password">
+                        <input type="submit" value="Login" [disabled]="loginForm.invalid">
+                    </form>
+                </div>
+                <!--END REACTIVE FORM-->
+                <!-- START TEMPLATE DRIVEN FORM-->
+                <div class="form">
+                    <h2>Create an account</h2>
+                    <form #addUserForm='ngForm'>
+                        <p class="error" *ngIf="usname.invalid && usname.touched">Please enter an username.</p>
+                        <input type="text" name="username" [ngModel]="uname" placeholder="Username" required=" " #usname='ngModel'>
+                       
+                        <p class="error" *ngIf="uspass.invalid && uspass.touched">Please enter the password.</p>
+                        <input type="password" name="password" [ngModel]="upass" placeholder="Password" required=" " #uspass='ngModel'>
+                       
+                        <p class="error" *ngIf="usmail.invalid && usmail.touched">Please enter your email id.</p>
+                        <input type="email" name="email" [ngModel]="umail" placeholder="Email Address" required=" " #usmail='ngModel'>
+                       
+                        <p class="error" *ngIf="usphone.invalid && usphone.touched">Please enter your phone number.</p>
+                        <input type="text" name="phone" [ngModel]="uphone" placeholder="Phone Number (Do not enter 0 or +91)" required minlength="10" maxlength="10" #usphone='ngModel'>
+                       
+                        <input type="submit" value="Register" (click)="addUser(addUserForm)" [disabled]="!addUserForm.valid">
+                    </form>
+                </div>
+                <!-- END TEMPLATE DRIVEN FORM-->
+                <div class="cta"><a routerLink="/forgot">Forgot your password?</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- //login -->
+</div>
+<div class="clearfix"></div>
